@@ -6,25 +6,11 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router'
 const router = useRouter()
 
-const bgUrl = '/bing/HPImageArchive.aspx?format=js&idx=0&n=1&nc=1586183781119&pid=hp&uhd=1&uhdwidth=4196&uhdheight=2160';
+
 const wordUrl = '/oneWord/one.json';
+const bg='/public/bg/bing.png'
 
 let image = ref('')
-
-const getImage = () => {
-  axios.get(bgUrl, {
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET'
-    },
-  }).then(res => {
-    image.value = "https://bing.com/" + res.data.images[0].url
-  })
-    .catch(error => {
-      console.error(error);
-    });
-}
-
 let oneWord = ref('')
 let wordAuthor = ref('')
 let wordContent = ref('')
@@ -46,6 +32,24 @@ const getOneWord = () => {
       console.error(error);
     });
 }
+
+
+// const getImage = () => {
+//   axios.get(bgUrl, {
+//     headers: {
+//       'Access-Control-Allow-Origin': '*',
+//       'Access-Control-Allow-Methods': 'GET'
+//     },
+//   }).then(res => {
+//     console.log(res)
+//     // image.value = "https://bing.com/" + res.data.images[0].url
+//   })
+//       .catch(error => {
+//         console.error(error);
+//       });
+// }
+
+
 const searchEngine = ref('www.bing.com')
 const searchQuery = ref('')
 
@@ -99,9 +103,7 @@ const toHome = () => {
   )
 }
 
-
 getOneWord();
-getImage()
 const themeData = themeStore()
 
 //语言
@@ -110,7 +112,7 @@ let { theme } = storeToRefs(themeData);
 
 <template>
   <div class="shadow"></div>
-  <div class="motherBox" :style='{ backgroundImage: `url(${image})` }' style=" width: 100%; ">
+  <div class="motherBox" :style='{ backgroundImage: `url(${bg})` }' style=" width: 100%; ">
     <n-button strong secondary type="info" style="position:absolute; right: 15%;top:2%;z-index: 3;" round @click="toHome">
       首页
       <template #icon>
