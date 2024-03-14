@@ -32,11 +32,6 @@ export default defineConfig({
                     '^/api': ''
                 }
             },
-            '/bing': {
-                target: 'https://www.bing.com',
-                changeOrigin: true,
-                rewrite: (path) => path.replace(/^\/bing/, '/'),
-            },
             '/oneWord': {
                 target: 'https://v2.jinrishici.com',
                 changeOrigin: true,
