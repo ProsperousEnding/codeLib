@@ -1,6 +1,6 @@
 //设置场景
 import * as THREE from "three";
-import {Water} from '/public/js/Water.js';
+import {Water} from '../../../../public/js/Water.js';
 
 const scene = new THREE.Scene();
 
@@ -26,7 +26,7 @@ const setWater = () => {
         {
             textureWidth: 512,
             textureHeight: 512,
-            waterNormals: new THREE.TextureLoader().load('/public/bg/waternormals.jpg', function (texture) {
+            waterNormals: new THREE.TextureLoader().load('./../../../public/bg/waternormals.jpg', function (texture) {
                 texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
             }),
             sunDirection: new THREE.Vector3(),

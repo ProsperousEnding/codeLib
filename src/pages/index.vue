@@ -7,7 +7,7 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 
-const wordUrl = './bg/oneWord/oneWord.json';
+  const wordUrl = './bg/oneWord/oneWord.json';
 const bg='./bg/bing.png'
 
 let image = ref('')

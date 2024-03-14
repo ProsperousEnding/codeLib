@@ -8,9 +8,9 @@ import _ from 'ammo.js/ammo'
 
 //加载骨骼动画
 const vmdFiles = [
-    {name: 'ji', url: '/vmd/ji.vmd'},
-    {name: "v2", url: "/vmd/wavefile_lat.vmd"},
-    {name: "moonwalkVmd", url: "/vmd/moonwalk.vmd"},];
+    {name: 'ji', url: './vmd/ji.vmd'},
+    {name: "v2", url: "./vmd/wavefile_lat.vmd"},
+    {name: "moonwalkVmd", url: "./vmd/moonwalk.vmd"},];
 
 
 let mmdLoader = new MMDLoader();
