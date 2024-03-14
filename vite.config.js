@@ -32,11 +32,6 @@ export default defineConfig({
                     '^/api': ''
                 }
             },
-            '/oneWord': {
-                target: 'https://v2.jinrishici.com',
-                changeOrigin: true,
-                rewrite: (path) => path.replace(/^\/oneWord/, '/'),
-            }
         },
     },
     resolve: {

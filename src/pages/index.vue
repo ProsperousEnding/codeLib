@@ -7,7 +7,7 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 
-const wordUrl = '/oneWord/one.json';
+const wordUrl = './bg/oneWord/oneWord.json';
 const bg='./bg/bing.png'
 
 let image = ref('')
@@ -22,7 +22,7 @@ const getOneWord = () => {
       'Access-Control-Allow-Methods': 'GET'
     },
   }).then(res => {
-    const data = res.data.data
+    const data = res.data
     oneWord.value = data.content
     wordAuthor.value = data.origin.author
     wordContent.value = data.origin.content
