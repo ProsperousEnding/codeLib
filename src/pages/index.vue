@@ -8,7 +8,7 @@ const router = useRouter()
 
 
 const wordUrl = '/oneWord/one.json';
-const bg='/public/bg/bing.png'
+const bg='./bg/bing.png'
 
 let image = ref('')
 let oneWord = ref('')
