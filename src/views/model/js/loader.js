@@ -2,6 +2,7 @@ import {MMDLoader} from "three/examples/jsm/loaders/MMDLoader";
 import {scene} from "./scene";
 import {animationHelper} from './helper'
 
+import _ from 'ammo.js/ammo'
 //  模型加载器
 // const modelFiles = '/model/shenhe/shenhe.pmx'
 
