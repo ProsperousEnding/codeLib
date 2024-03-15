@@ -9,8 +9,6 @@ import {clipAction,loadMmd,loadWithAnimationMmd} from "./js/loader";
 import SvgIcon from "@/components/SvgIcon.vue";
 import yourNameBg from "../../../public/bg/yourName.png"
 const modelFiles = '../../../public/model/ikun/kun.pmx'
-
-
 const kunBg = '../bg/bgModel/kun/IdolProducer.pmx'
 
 //canvas的id
