@@ -26,7 +26,11 @@ import {
     NH3,
     NH4,
     NText,
-    NDropdown
+    NDropdown,
+    NCard,
+    NTag,
+    NPagination,
+    NPopconfirm
 
 } from 'naive-ui'
 const naive = create({
@@ -55,7 +59,11 @@ const naive = create({
         NH3,
         NH4,
         NText,
-        NDropdown
+        NDropdown,
+        NCard,
+        NTag,
+        NPagination,
+        NPopconfirm
     
     ],
 })

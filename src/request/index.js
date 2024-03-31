@@ -1,9 +1,10 @@
 import axios from "axios";
 //为拦截器报错所用的弹框，如不需要可以不导入
-import { ElMessage } from "element-plus";
+import { useMessage } from "naive-ui";
+const message = useMessage();
 
 const service=axios.create({
-    baseURL: 'http://localhost:8980/code', //基本路径，后面可直接写/方法即可
+    baseURL: 'http://localhost:8980', //基本路径，后面可直接写/方法即可
     withCredentials: false, // 异步请求携带cookie
     // 设置请求头
     headers: {
@@ -33,10 +34,10 @@ service.interceptors.request.use((request)=>{
     //获取接口返回结果
     const res=response.data
     console.log("response：",response);
-    if(res.code==200){
+    if(res.code===200){
         return res;
     }else{
-        ElMessage.error(res.data||'网络异常')
+        message.error(res.data||'网络异常')
         return res;
     }
         // console.log("response：",response);

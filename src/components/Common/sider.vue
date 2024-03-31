@@ -67,7 +67,7 @@ const menuOptions = [
             RouterLink,
             {
                 to: {
-                    name: "index"
+                    name: "searchEngine"
                 }
             },
             () => "搜索引擎"

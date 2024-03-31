@@ -5,9 +5,9 @@ const routes=[
        redirect: "/index",
      },
      {
-      path: "/index",
-      name: "index",
-      component: () => import('@/pages/index.vue'),
+      path: "/searchEngine",
+      name: "searchEngine",
+      component: () => import('@/pages/searchEngine.vue'),
      },
      {
        path: "/layout",
