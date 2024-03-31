@@ -2,7 +2,7 @@ const routes=[
     {
        path: "/",
        name:'/',
-       redirect: "/index",
+       redirect: "/searchEngine",
      },
      {
       path: "/searchEngine",
