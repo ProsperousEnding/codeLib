@@ -11,18 +11,6 @@ let {theme} = storeToRefs(themeData);
 let navData = ref({})
 // let outFlyArr=ref(['animate__animated','animate__fadeOutTopRight'])
 
-const isActive = ref(-1);
-
-const outFlyArr = computed(() => {
-  const classNames = ['animate__animated'];
-  if (isActive.value) {
-    classNames.push('animate__fadeOutTopRight');
-  } else {
-    classNames.pop('animate__animated');
-  }
-  return classNames
-});
-
 
 //设置图标
 function renderIcon(icon) {
@@ -60,11 +48,13 @@ const currentChange = (val, type) => {
   getPage()
 }
 
-const redirectToExternalSite =  (index, url) => {
-  isActive.value = index
+const isActionActive = ref(-1);
+const isCardActive = ref(-1);
+const redirectToExternalSite = (index, url) => {
+  isActionActive.value = index
   setTimeout(() => {
     window.open(url, '_blank');
-    isActive.value = -1;
+    isActionActive.value = -1;
   }, 450);
 
   // window.location.href = url;
@@ -81,9 +71,9 @@ const redirectToExternalSite =  (index, url) => {
       </template>
     </n-tag>
     <div class="card_div">
-      <n-card v-for="(nav,index) in page.pageData" class="card" hoverable>
+      <n-card v-for="(nav,index) in page.pageData" :class="index===isCardActive?'card animate__animated animate__pulse':'card'" hoverable @mouseover="isCardActive=index">
         <template #header>
-          <n-avatar :size="35" class="card_img" :src='nav.cover' @click="redirectToExternalSite(nav.url)"
+          <n-avatar :size="35" class="card_img" :src='nav.cover' @click="redirectToExternalSite(nav.url)"  @mouseover="isCardActive=index"
                     preview-disabled round/>
         </template>
 
@@ -92,7 +82,7 @@ const redirectToExternalSite =  (index, url) => {
             {{ nav.title }}
           </div>
 
-          <n-tooltip placement="bottom" trigger="hover">
+          <n-tooltip :style="{ maxWidth: '400px' }" placement="bottom" trigger="hover">
             <template #trigger>
               <div class="card_footer_bottom">
                 {{ nav.webDescribe }}
@@ -102,7 +92,7 @@ const redirectToExternalSite =  (index, url) => {
           </n-tooltip>
         </template>
         <template #action>
-          <SvgIcon :class="index==isActive?'animate__animated animate__fadeOutTopRight':'animate__animated'"
+          <SvgIcon :class="index===isActionActive?'animate__animated animate__fadeOutTopRight':'animate__animated'"
                    name="space_rocket" size="18" @click="redirectToExternalSite(index,nav.url)"></SvgIcon>
         </template>
       </n-card>
