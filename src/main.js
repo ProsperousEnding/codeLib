@@ -1,6 +1,6 @@
 import {createApp} from 'vue'
 import {createPinia} from 'pinia'
-
+import 'animate.css';
 import './assets/base.css'
 
 import 'virtual:svg-icons-register'

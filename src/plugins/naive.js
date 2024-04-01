@@ -30,7 +30,8 @@ import {
     NCard,
     NTag,
     NPagination,
-    NPopconfirm
+    NPopconfirm,
+    NTooltip
 
 } from 'naive-ui'
 const naive = create({
@@ -63,7 +64,8 @@ const naive = create({
         NCard,
         NTag,
         NPagination,
-        NPopconfirm
+        NPopconfirm,
+        NTooltip
     
     ],
 })
