@@ -1,0 +1,1 @@
+import{ab as o,r as a}from"./index-cnVL5OxX.js";const n=o("collapsedStore",()=>{let l=a(!0),e=a(!1);return{showTitle:l,collapsed:e,changeShow:t=>{l.value=t,e.value=!t}}}),c=o("themeStore",()=>{let l=a(null),e=a(!1);return{theme:l,themeFlag:e,changeTheme:(t,h)=>{e.value=t,l.value=e.value?null:h}}});export{n as c,c as t};
