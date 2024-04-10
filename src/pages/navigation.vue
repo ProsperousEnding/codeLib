@@ -83,7 +83,7 @@ const redirectToExternalSite = (index, url) => {
         </template>
 
         <template #footer>
-          <div class="card_footer_top hvr-grow hvr-forward" @click="redirectToExternalSite(nav.url)">
+          <div class="card_footer_top hvr-grow hvr-forward" @click="redirectToExternalSite(index,nav.url)">
             {{ nav.title }}
           </div>
           <n-tooltip :style="{ maxWidth: '400px' }" placement="bottom" trigger="hover">
