@@ -2,7 +2,7 @@
 import {themeStore} from '@/stores/menu';
 import SvgIcon from "@/components/SvgIcon.vue";
 import {getNavWebsite} from "@/request/api/nav.js";
-import img from '/favicon.ico'
+import img from '@/assets/logo.svg'
 const themeData = themeStore()
 
 //语言
