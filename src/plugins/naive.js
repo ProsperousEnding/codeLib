@@ -31,7 +31,9 @@ import {
     NTag,
     NPagination,
     NPopconfirm,
-    NTooltip
+    NTooltip,
+    NFloatButton,
+    NFlex
 
 } from 'naive-ui'
 const naive = create({
@@ -65,7 +67,9 @@ const naive = create({
         NTag,
         NPagination,
         NPopconfirm,
-        NTooltip
+        NTooltip,
+        NFloatButton,
+        NFlex
     
     ],
 })

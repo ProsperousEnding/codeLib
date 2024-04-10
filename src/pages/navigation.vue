@@ -59,18 +59,22 @@ const redirectToExternalSite = (index, url) => {
   }, 450);
 
   // window.location.href = url;
-
 }
+
+
 </script>
 
 <template>
   <div class="nav_div">
-    <n-tag style="margin: 5px;" :color="{ color: '#fff'}" :bordered="false">
-      综合导航
-      <template #avatar>
-        <SvgIcon name="earth_around" size="24"></SvgIcon>
-      </template>
-    </n-tag>
+<!--    <n-tag style="margin: 5px; " :color="{ color: '#fff'}" :bordered="false">-->
+    <div style="margin: 5px; width:200px;display: flex;align-items: center">
+    <SvgIcon name="earth_around" size="24"></SvgIcon>
+      <label style="filter: invert(30%); font-weight: bold ">综合导航</label>
+    </div>
+<!--      <template #avatar>-->
+
+<!--      </template>-->
+<!--    </n-tag>-->
     <div class="card_div">
       <n-card v-for="(nav,index) in page.pageData" :class="index===isCardActive?'card animate__animated animate__pulse':'card'" hoverable @mouseover="isCardActive=index">
         <template #header>
@@ -83,7 +87,7 @@ const redirectToExternalSite = (index, url) => {
         </template>
 
         <template #footer>
-          <div class="card_footer_top hvr-grow hvr-forward" @click="redirectToExternalSite(index,nav.url)">
+          <div  class="card_footer_top hvr-grow hvr-forward" @click="redirectToExternalSite(index,nav.url)">
             {{ nav.title }}
           </div>
           <n-tooltip :style="{ maxWidth: '400px' }" placement="bottom" trigger="hover">
@@ -230,8 +234,6 @@ const redirectToExternalSite = (index, url) => {
   position: absolute;
   top: 0;
   left: 2px;
-  width: 100%;
-  height: 100%;
   background: rgba(255,255,255, 0.2);
   backdrop-filter: blur(0px);
   border-radius: 12px;
