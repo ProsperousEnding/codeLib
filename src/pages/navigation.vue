@@ -11,6 +11,7 @@ let {theme} = storeToRefs(themeData);
 let navData = ref({})
 // let outFlyArr=ref(['animate__animated','animate__fadeOutTopRight'])
 
+let emptyImage=ref ("/favicon.ico")
 
 //设置图标
 function renderIcon(icon) {
@@ -73,15 +74,18 @@ const redirectToExternalSite = (index, url) => {
     <div class="card_div">
       <n-card v-for="(nav,index) in page.pageData" :class="index===isCardActive?'card animate__animated animate__pulse':'card'" hoverable @mouseover="isCardActive=index">
         <template #header>
-          <n-avatar :size="35" class="card_img" :src='nav.cover' @click="redirectToExternalSite(nav.url)"  @mouseover="isCardActive=index"
-                    preview-disabled round/>
+          <div class="avatar-wrapper">
+          <n-avatar :size="38" class="card_img" :src='nav.cover'  :fallback-src="emptyImage"
+                    @click="redirectToExternalSite(nav.url)"  @mouseover="isCardActive=index"
+                    preview-disabled  round/>
+          <div class="masking"> </div>
+          </div>
         </template>
 
         <template #footer>
-          <div class="card_footer_top" @click="redirectToExternalSite(nav.url)">
+          <div class="card_footer_top hvr-grow hvr-forward" @click="redirectToExternalSite(nav.url)">
             {{ nav.title }}
           </div>
-
           <n-tooltip :style="{ maxWidth: '400px' }" placement="bottom" trigger="hover">
             <template #trigger>
               <div class="card_footer_bottom">
@@ -92,9 +96,10 @@ const redirectToExternalSite = (index, url) => {
           </n-tooltip>
         </template>
         <template #action>
-          <SvgIcon :class="index===isActionActive?'animate__animated animate__fadeOutTopRight':'animate__animated'"
+          <SvgIcon style="cursor: pointer;" :class="index===isActionActive?'animate__animated animate__fadeOutTopRight hvr-grow  hvr-skew-forward':'animate__animated hvr-grow  hvr-skew-forward'"
                    name="space_rocket" size="18" @click="redirectToExternalSite(index,nav.url)"></SvgIcon>
         </template>
+
       </n-card>
     </div>
     <n-pagination class="card_page"
@@ -119,6 +124,9 @@ const redirectToExternalSite = (index, url) => {
 
 
 <style scoped>
+@import "hover.css";
+
+
 .nav_div {
   /*//background: #409EFF;*/
   width: 100%;
@@ -133,6 +141,7 @@ const redirectToExternalSite = (index, url) => {
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center !important;
+
 }
 
 .card {
@@ -145,13 +154,14 @@ const redirectToExternalSite = (index, url) => {
   align-items: center !important;
   flex-direction: row;
   margin-top: 20px;
-
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  border-radius: 10px;
 }
 
+
 .card_img {
-  margin-top: 3px;
-  margin-left: 10px;
-  margin-right: 5px;
+  margin-top: 10px;
+  margin-left: 15px;
   max-height: 100%;
 }
 
@@ -163,6 +173,7 @@ const redirectToExternalSite = (index, url) => {
   padding: 1px;
   width: 200px;
   margin-left: 5px;
+
 
 }
 
@@ -178,6 +189,8 @@ const redirectToExternalSite = (index, url) => {
   line-height: 1.5;
   font-weight: bold;
   color: #282a2d;
+  /*鼠标悬浮为手指*/
+  cursor: pointer;
 }
 
 .card_footer_bottom {
@@ -190,7 +203,8 @@ const redirectToExternalSite = (index, url) => {
   font-size: .75rem !important;
   color: #6c757d !important;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-
+ /*鼠标悬浮为指针*/
+  cursor: context-menu;
 }
 
 :deep(.n-card) > .n-card__action {
@@ -206,5 +220,20 @@ const redirectToExternalSite = (index, url) => {
   display: flex;
   justify-content: right;
   margin-top: 10px;
+
+}
+.avatar-wrapper {
+  position: relative;
+}
+
+.masking {
+  position: absolute;
+  top: 0;
+  left: 2px;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255, 0.2);
+  backdrop-filter: blur(0px);
+  border-radius: 12px;
 }
 </style>
