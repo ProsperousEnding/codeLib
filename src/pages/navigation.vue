@@ -2,7 +2,7 @@
 import {themeStore} from '@/stores/menu';
 import SvgIcon from "@/components/SvgIcon.vue";
 import {getNavWebsite} from "@/request/api/nav.js";
-import img from '@/assets/logo.svg'
+import avatarImg from '@/assets/avatar.svg'
 const themeData = themeStore()
 
 //语言
@@ -11,7 +11,7 @@ let {theme} = storeToRefs(themeData);
 let navData = ref({})
 // let outFlyArr=ref(['animate__animated','animate__fadeOutTopRight'])
 
-let emptyImage=ref (img)
+let emptyImage=ref (avatarImg)
 
 //设置图标
 function renderIcon(icon) {

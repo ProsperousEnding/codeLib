@@ -5,6 +5,9 @@ import { darkTheme } from 'naive-ui'
 
 import {collapsedStore,themeStore} from '@/stores/menu.js'
 
+import avatarImg from '@/assets/avatar.svg'
+
+let avatar=ref(avatarImg)
 const collapsedData = collapsedStore()
 const themeData = themeStore()
 // //侧边栏控制
@@ -29,6 +32,8 @@ const changeTheme = () => {
     theme_icon.value = themeFlag.value ? "sun" : "moon"
     themeData.changeTheme(themeFlag.value,darkTheme)
 }
+
+
 
 </script>
 <template>
@@ -59,10 +64,13 @@ const changeTheme = () => {
                 <!-- 第四部分 -->
                 <div class="the_end ">
                     <n-space justify="end">
-                        <n-button  quaternary style="width:100%;height:100%">
-                            <n-avatar lazy round size="large"   src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg" />
-                        <div style="padding:12px"><label>用户名</label></div>
-                        </n-button>
+                      <n-float-button :left="0" :bottom="0" shape="square" type="primary">
+                        <n-avatar style="max-height: 100%;max-width: 100%"  lazy round :size="35"   :src="avatar" />
+                      </n-float-button>
+<!--                        <n-button  style="max-width:100%;max-height:100%" quaternary>-->
+<!--                            <n-avatar style="max-height: 100%;max-width: 100%"  lazy round :size="35"   :src="avatar" />-->
+<!--                        <div style="padding:12px"><label>用户名</label></div>-->
+<!--                        </n-button>-->
                         
                     </n-space>
                 </div>
