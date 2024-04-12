@@ -33,7 +33,8 @@ import {
     NPopconfirm,
     NTooltip,
     NFloatButton,
-    NFlex
+    NFlex,
+    NColorPicker
 
 } from 'naive-ui'
 const naive = create({
@@ -69,7 +70,8 @@ const naive = create({
         NPopconfirm,
         NTooltip,
         NFloatButton,
-        NFlex
+        NFlex,
+        NColorPicker
     
     ],
 })

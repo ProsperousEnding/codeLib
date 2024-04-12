@@ -1,14 +1,13 @@
 <script setup>
 import SvgIcon from "@/components/SvgIcon.vue";
-import {darkTheme} from 'naive-ui'
-
-import {collapsedStore, themeStore} from '@/stores/menu.js'
+import {collapsedStore} from '@/stores/menu.js'
+import {themeStore} from '@/stores/themeStore.js'
 
 import avatarImg from '@/assets/avatar.svg'
-
 let avatar = ref(avatarImg)
 const collapsedData = collapsedStore()
 const themeData = themeStore()
+const {theme,themeConfig,themeOverrides} = storeToRefs(themeData)
 // //侧边栏控制
 let collapsedFlag = ref(true)
 let collapsed = ref(true)
@@ -21,15 +20,13 @@ const changeCollapsed = () => {
   collapsedData.changeShow(collapsedFlag.value)
 }
 
-
-let theme = ref(null);
 let themeFlag = ref(true)
 let theme_icon = ref("sun")
 // //主题
 const changeTheme = () => {
   themeFlag.value = !(themeFlag.value)
   theme_icon.value = themeFlag.value ? "sun" : "moon"
-  themeData.changeTheme(themeFlag.value, darkTheme)
+  themeData.changeTheme()
 }
 
 
@@ -48,6 +45,10 @@ const changeTheme = () => {
       <n-gi>
         <!-- 第二部分 -->
         <div class="the_second ">
+          <n-color-picker style="width: 100px"
+              v-model:value="themeConfig.primary"
+              :show-alpha="false"
+          />
         </div>
       </n-gi>
       <n-gi>
@@ -66,8 +67,8 @@ const changeTheme = () => {
             <n-flex justify="space-between"
                     style="width: 180px;display: flex;align-items: center;justify-content: space-around">
               <n-avatar style="max-height: 100%;max-width: 100%" lazy round :size="36" :src="avatar"/>
-              <n-gradient-text type="info" :gradient="{from: 'rgb(85, 85, 85)',to: 'rgb(170, 170, 170)'}" :size="24" style=" margin-right: 20px;">
-                <div style="padding:12px"><label>用户名</label></div>
+              <n-gradient-text type="primary":size="18" >
+                <div  :bordered="false" class="color-primary-01" style="padding:12px;margin-right: 20px;">用户名</div>
               </n-gradient-text>
             </n-flex>
           </n-space>

@@ -1,5 +1,5 @@
 <script setup>
-import {themeStore} from '@/stores/menu';
+import {themeStore} from '@/stores/themeStore.js';
 import SvgIcon from "@/components/SvgIcon.vue";
 import {getNavWebsite} from "@/request/api/nav.js";
 import avatarImg from '@/assets/avatar.svg'

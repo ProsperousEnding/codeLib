@@ -36,7 +36,7 @@ const menuOptions = [
         icon: renderIcon("blog"),
         children: [
             {
-                label: "鼠",
+                label: "111",
                 key: "rat",
                 icon: renderIcon("open")
             }
@@ -71,6 +71,19 @@ const menuOptions = [
                 }
             },
             () => "搜索引擎"
+        ),
+        key: "code-search",
+        icon: renderIcon("search_page")
+    },
+    {
+        label: () => h(
+            RouterLink,
+            {
+                to: {
+                    name: "themeChange"
+                }
+            },
+            () => "主题更换"
         ),
         key: "code-search",
         icon: renderIcon("search_page")
