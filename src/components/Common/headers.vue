@@ -39,7 +39,9 @@ const changeTheme = () => {
         <!-- 第一部分 -->
         <div class="the_first ">
           <!-- 控制侧边栏 -->
-          <SvgIcon class="collapsed_icon" :name=collapsed_icon size="24" @click="changeCollapsed"/>
+          <n-icon size="24" class="color-primary">
+            <SvgIcon class="collapsed_icon " :name=collapsed_icon size="24" @click="changeCollapsed"/>
+          </n-icon>
         </div>
       </n-gi>
       <n-gi>
@@ -87,10 +89,10 @@ const changeTheme = () => {
 
 .collapsed_icon {
 
-  color: #707070;
+  /*color: #707070;*/
 }
 
 .collapsed_icon:hover {
-  color: #bfbfbf;
+  color:  #707070;
 }
 </style>

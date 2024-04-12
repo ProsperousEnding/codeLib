@@ -34,7 +34,7 @@ import {
     NTooltip,
     NFloatButton,
     NFlex,
-    NColorPicker
+    NColorPicker,
 
 } from 'naive-ui'
 const naive = create({
@@ -71,7 +71,7 @@ const naive = create({
         NTooltip,
         NFloatButton,
         NFlex,
-        NColorPicker
+        NColorPicker,
     
     ],
 })

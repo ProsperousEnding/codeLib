@@ -50,7 +50,7 @@ const currentChange = (val, type) => {
 }
 
 const isActionActive = ref(-1);
-const isCardActive = ref(-1);
+let isCardActive = ref(-1);
 const redirectToExternalSite = (index, url) => {
   isActionActive.value = index
   setTimeout(() => {
@@ -87,8 +87,8 @@ const redirectToExternalSite = (index, url) => {
         </template>
 
         <template #footer>
-          <div  class="card_footer_top hvr-grow hvr-forward" @click="redirectToExternalSite(index,nav.url)">
-            {{ nav.title }}
+          <div  class="card_footer_top hvr-grow hvr-forward " @click="redirectToExternalSite(index,nav.url)">
+           <n-text type="primary" class="color-primary">{{ nav.title }}</n-text>
           </div>
           <n-tooltip :style="{ maxWidth: '400px' }" placement="bottom" trigger="hover">
             <template #trigger>
@@ -187,8 +187,8 @@ const redirectToExternalSite = (index, url) => {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: .875rem !important;
   border-radius: .25rem;
+  font-size: .875rem !important;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   line-height: 1.5;
   font-weight: bold;
