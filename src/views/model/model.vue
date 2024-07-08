@@ -6,7 +6,7 @@ import  {camera,orbitControls,createOrbitControls,setCamera} from './js/camera'
 import {setListener,renderer} from "./js/render";
 import {animationHelper,setAxesHelper} from "./js/helper"
 import {clipAction,loadMmd,loadWithAnimationMmd} from "./js/loader";
-import SvgIcon from "@/components/SvgIcon.vue";
+import SvgIcon from "@/components/Svg/SvgIcon.vue";
 import yourNameBg from "/bg/yourName.png"
 const modelFiles = 'model/ikun/kun.pmx'
 const kunBg = 'bg/bgModel/kun/IdolProducer.pmx'
