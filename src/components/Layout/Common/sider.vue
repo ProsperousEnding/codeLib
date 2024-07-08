@@ -1,6 +1,6 @@
 <script setup>
 import {h, ref} from "vue";
-import SvgIcon from "@/components/SvgIcon.vue";
+import SvgIcon from "@/components/Svg/SvgIcon.vue";
 import {RouterLink} from "vue-router";
 
 import {collapsedStore} from '@/stores/menu.js'

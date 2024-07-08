@@ -1,6 +1,6 @@
 
 <script setup>
-import sider from '@/components/Common/sider.vue'
+import sider from '@/components/Layout/Common/sider.vue'
 import { collapsedStore } from '@/stores/menu.js'
 
 const collapsedData = collapsedStore()

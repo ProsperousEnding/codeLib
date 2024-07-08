@@ -1,6 +1,6 @@
 <script setup>
 import { themeStore } from '@/stores/themeStore.js';
-import SvgIcon from "@/components/SvgIcon.vue";
+import SvgIcon from "@/components/Svg/SvgIcon.vue";
 import axios from 'axios';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router'
@@ -203,7 +203,7 @@ let { theme } = storeToRefs(themeData);
   border-radius: 45px;
   font-size: 16px;
   padding-right: 10px;
-  border-image: url(../assets/svg/square.svg) 8 8 round;
+  border-image: url(../../assets/svg/square.svg) 8 8 round;
 }
 
 .home_icon {

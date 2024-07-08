@@ -1,6 +1,6 @@
 <script setup>
-import headersLayoutVue from '@/components/Layout/headersLayout.vue';
-import siderLayout from '@/components/Layout/siderLayout.vue';
+import headersLayoutVue from '@/components/Layout/Common/headersLayout.vue';
+import siderLayout from '@/components/Layout/Common/siderLayout.vue';
 import {themeStore} from '@/stores/themeStore';
 import {dateZhCN} from 'naive-ui'
 import {ref} from "vue";

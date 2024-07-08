@@ -1,5 +1,5 @@
 <script setup>
-import SvgIcon from "@/components/SvgIcon.vue";
+import SvgIcon from "@/components/Svg/SvgIcon.vue";
 import {collapsedStore} from '@/stores/menu.js'
 import {themeStore} from '@/stores/themeStore.js'
 

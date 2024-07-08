@@ -8,7 +8,7 @@ import 'virtual:svg-icons-register'
 import App from './App.vue'
 import router from './router/index'
 import naive from './plugins/naive'
-import SvgIcon from './components/SvgIcon.vue'
+import SvgIcon from './components/Svg/SvgIcon.vue'
 import VWave from 'v-wave'
 
 const app = createApp(App)

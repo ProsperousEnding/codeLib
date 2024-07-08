@@ -1,6 +1,6 @@
 <script setup>
 import {themeStore} from '@/stores/themeStore.js';
-import SvgIcon from "@/components/SvgIcon.vue";
+import SvgIcon from "@/components/Svg/SvgIcon.vue";
 import {getNavWebsite} from "@/request/api/nav.js";
 import avatarImg from '@/assets/avatar.svg'
 const themeData = themeStore()
