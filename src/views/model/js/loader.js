@@ -7,9 +7,9 @@ import {MTLLoader} from 'three/examples/jsm/loaders/MTLLoader.js';
 import {FBXLoader} from 'three/examples/jsm/loaders/FBXLoader.js';
 
 const room = reactive({
-    "fbx": '/bg/bgModel/output/room.fbx',
-    "mtl": '/bg/bgModel/output/room.mtl',
-    "obj": '/bg/bgModel/output/room.obj',
+    "fbx": './bg/bgModel/output/room.fbx',
+    "mtl": './bg/bgModel/output/room.mtl',
+    "obj": './bg/bgModel/output/room.obj',
 })
 
 
