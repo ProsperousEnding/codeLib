@@ -3,6 +3,9 @@ import * as THREE from "three";
 import {Water} from '../../../../public/js/Water.js';
 
 const scene = new THREE.Scene();
+// 雾效果
+scene.fog = new THREE.Fog(0xffffff, 0.0025, 500)
+scene.background = new THREE.Color(0xffffff)
 
 //设置平台
 const setPlatform = () => {
@@ -17,7 +20,7 @@ const setPlatform = () => {
     scene.add(platform);
 }
 
-
+//水
 let water;
 const setWater = () => {
     const waterGeometry = new THREE.PlaneGeometry(10000, 10000);
@@ -37,11 +40,22 @@ const setWater = () => {
         }
     );
     water.rotation.x = -Math.PI / 2;
-    console.log(water);
-    scene.add(water);
+    // scene.add(water);
 };
-
 setWater()
+
+// 地板 floor 几何体
+const setFloor = () => {
+    const geo = new THREE.BoxGeometry(500, 0.25, 500, 10, 10, 10)
+    const mat = new THREE.MeshStandardMaterial({color: 0xdddddd})
+    const mesh = new THREE.Mesh(geo, mat)
+    mesh.position.set(0, -19, 0)
+    mesh.receiveShadow = true
+    mesh.name = 'floating-floor'
+    scene.add(mesh)
+}
+setFloor()
+
 
 //设置背景
 const setBg = (img) => {

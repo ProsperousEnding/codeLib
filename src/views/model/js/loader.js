@@ -1,10 +1,17 @@
 import {MMDLoader} from "three/examples/jsm/loaders/MMDLoader";
 import {scene} from "./scene";
 import {animationHelper} from './helper'
+import * as THREE from "three";
+import {OBJLoader} from "three/examples/jsm/loaders/OBJLoader";
+import {MTLLoader} from 'three/examples/jsm/loaders/MTLLoader.js';
+import {FBXLoader} from 'three/examples/jsm/loaders/FBXLoader.js';
 
-import _ from 'ammo.js/ammo'
-//  模型加载器
-// const modelFiles = '/model/shenhe/shenhe.pmx'
+const room = reactive({
+    "fbx": '/bg/bgModel/output/room.fbx',
+    "mtl": '/bg/bgModel/output/room.mtl',
+    "obj": '/bg/bgModel/output/room.obj',
+})
+
 
 //加载骨骼动画
 const vmdFiles = [
@@ -23,10 +30,22 @@ const mixMesh = (mesh, animation) => {
 
 
 //加载模型
-const loadMmd = (model, load, animation) => {
+const loadMmd = (model, load, animation,hasTextTure,path) => {
     mmdLoader.load(model, function (mesh) {
         if (animation) {
             loadAnimation(mesh, load)
+        }
+        if(hasTextTure){
+            // 手动加载和应用贴图
+            const textureLoader = new THREE.TextureLoader();
+            textureLoader.load(path, (texture) => {
+                model.traverse((child) => {
+                    if (child.isMesh) {
+                        child.material.map = texture;
+                        child.material.needsUpdate = true;
+                    }
+                });
+            });
         }
     }, onProgress, onError);
 }
@@ -40,12 +59,15 @@ const loadAnimation = (mesh, load) => {
         });
         // 设置模型位置
         mesh.position.set(
-            0,
-            0,
-            0
+            20,
+            -18,
+            35
         );
+        // 45度等于π/4弧度
+        mesh.rotation.y = Math.PI / 2;
+
         // 设置模型缩放
-        mesh.scale.set(0.8, 0.8, 0.8);
+        mesh.scale.set(1.5, 1.5, 1.5);
 
         //播放与暂停
         clipAction = mixMesh(mesh, animation);
@@ -61,7 +83,7 @@ const loadWithAnimation = (modelUrl, vmdUrl, onLoad, onProgress, onError) => {
             physics: true
         });
         scene.add(mmd.mesh);
-    }, true)
+    }, true,false,null)
 }
 
 //加载带动画的模型
@@ -78,6 +100,42 @@ const loadWithAnimationMmd = (model) => {
     )
 }
 
+const mtlLoader = new MTLLoader();
+const geometry = new THREE.BoxGeometry(10, 10, 10);
+const material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+const cube = new THREE.Mesh(geometry, material);
+const fbxLoader = new FBXLoader();
+// 创建OBJLoader实例
+const objLoader = new OBJLoader();
+// 加载选秀场景
+const draftScene = () => {
+    mtlLoader.load(room.mtl, (materials) => {
+        materials.preload();
+        objLoader.setMaterials(materials);
+        objLoader.load(room.obj, (obj) => {
+            console.log(obj)
+            scene.add(obj)
+            // 设置模型位置
+            obj.position.set(
+                0,
+                -18,
+                -20
+            );
+            // 设置模型缩放
+            obj.scale.set(20, 20, -20);
+            // 加载FBX文件
+            fbxLoader.load(room.fbx, (texture) => {
+                obj.traverse((child) => {
+                    if (child.isMesh) {
+                        child.material.map = texture.material.map;
+                        child.material.needsUpdate = true;
+                    }
+                });
+            }, onProgress, onError);
+        }, onProgress, onError);
+    });
+}
+
 
 //加载进度
 const onProgress = (xhr) => {
@@ -89,4 +147,4 @@ const onError = (error) => {
 }
 
 
-export {clipAction, loadMmd, loadWithAnimationMmd, mixMesh}
+export {clipAction, loadMmd, loadWithAnimationMmd, mixMesh, draftScene}

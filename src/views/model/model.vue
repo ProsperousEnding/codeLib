@@ -1,12 +1,11 @@
 <script setup>
 import * as THREE from 'three';
-import {setBg,water,setWater,setPlatform,scene} from './js/scene'
+import {setBg, water, setWater, setPlatform, scene} from './js/scene'
 import {setLight} from './js/light'
-import  {camera,orbitControls,createOrbitControls,setCamera} from './js/camera'
-import {setListener,renderer} from "./js/render";
-import {animationHelper,setAxesHelper} from "./js/helper"
-import {clipAction,loadMmd,loadWithAnimationMmd} from "./js/loader";
-import yourNameBg from "/bg/yourName.png"
+import {camera, orbitControls, createOrbitControls,mouseControls, setCamera} from './js/camera'
+import {setListener, renderer} from "./js/render";
+import {animationHelper,stats, statsDom,gui,guiTools} from "./js/helper"
+import {clipAction, draftScene, loadMmd, loadWithAnimationMmd} from "./js/loader";
 import SvgIcon from "@/components/Svg/SvgIcon.vue";
 const modelFiles = 'model/ikun/kun.pmx'
 const kunBg = 'bg/bgModel/kun/IdolProducer.pmx'
@@ -18,7 +17,7 @@ const width = window.innerWidth - 10, height = window.innerHeight - 50;
 
 const clock = new THREE.Clock();
 let mesh
-const texFiles=[]
+const texFiles = []
 
 //暂停按钮图标
 let playBtnIcon = ref("play")
@@ -27,38 +26,51 @@ const playOrPause = () => {
   clipAction.paused = !clipAction.paused;
   playBtnIcon.value = (playBtnIcon.value === "play") ? "pause" : "play"
 }
-function render(){
-  water.material.uniforms[ 'time' ].value += 1.0 / 60.0;
+
+function render() {
+  water.material.uniforms['time'].value += 1.0 / 60.0;
 }
 
-//加载动画
+// //加载动画
 function animation() {
   render()
+  mouseControls.update();
+  stats.update();
   animationHelper.update(clock.getDelta());
   renderer.render(scene, camera);
 }
+
 renderer.setAnimationLoop(animation);
+
 
 const init = () => {
   //创建一个WebGL渲染器 这里的width、height是整个画布的宽高度
   renderer.setSize(width, height)
+  //设置光
   setLight();
+  //设置相机
   setCamera();
   loadWithAnimationMmd(modelFiles)
   // loadMmd(modelFiles)
-  setBg(yourNameBg);
-  setListener();
-  setAxesHelper();
-  createOrbitControls();
-  setPlatform();
-  setWater();
-  animation();
+  // setBg(yourNameBg);
+  // setListener();
+  //设置坐标轴
+  // setAxesHelper();
+  // createOrbitControls();
+  // setPlatform();
+  // setWater();
+  // animation();
+  // cameraHelper();
+  draftScene();
+  guiTools();
   renderer.render(scene, camera)
 }
 
 onMounted(() => {
-  init()
-  canvasContainer.value.appendChild(renderer.domElement)
+  init();
+  canvasContainer.value.appendChild(renderer.domElement);
+  canvasContainer.value.appendChild(gui.domElement)
+  canvasContainer.value.appendChild(statsDom)
 });
 </script>
 
